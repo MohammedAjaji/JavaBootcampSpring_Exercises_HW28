@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @Getter
 @Setter
@@ -29,7 +31,7 @@ public class Order {
     @Column(columnDefinition = "decimal not null")
     private Double totalPrice;
 
-    private String dateReceived;
+    private Date dateReceived;
 
     @NotEmpty(message = "status cannot be empty")
     @Column(columnDefinition = "varchar(25) not null check (status='new' or status='inProgress' or status='completed')")
