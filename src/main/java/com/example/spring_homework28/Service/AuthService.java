@@ -19,10 +19,14 @@ public class AuthService {
    private final MyUserRepository myUserRepository;
    private final OrderRepository orderRepository;
 
-    public void registerUser(MyUser myUser){
+   public List<MyUser> getUsers(){
+       return myUserRepository.findAll();
+   }
+
+   public void registerUser(MyUser myUser){
         String hash = new BCryptPasswordEncoder().encode(myUser.getPassword());
         myUser.setPassword(hash);
-        myUser.setRole("customer");
+        myUser.setRole("CUSTOMER");
         myUserRepository.save(myUser);
     }
 

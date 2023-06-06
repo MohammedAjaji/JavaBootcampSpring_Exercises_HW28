@@ -27,14 +27,14 @@ public class OrderController {
 
     @PostMapping("/add")
     public ResponseEntity addOrder(@AuthenticationPrincipal MyUser myUser, @RequestBody OrderDTO dto){
-        orderService.addOrder(myUser, dto);
-        return ResponseEntity.status(200).body("Order Added");
+        Double price = orderService.addOrder(myUser, dto);
+        return ResponseEntity.status(200).body("Order Added Total Price is " + price);
     }
 
     @PutMapping("/update/{orderId}")
     public ResponseEntity updateOrder(@AuthenticationPrincipal MyUser myUser, @RequestBody OrderDTO dto, @PathVariable Integer orderId){
-        orderService.updateOrder(myUser.getId(), dto, orderId);
-        return ResponseEntity.status(200).body("Order Updated");
+        Double price = orderService.updateOrder(myUser.getId(), dto, orderId);
+        return ResponseEntity.status(200).body("Order Updated new Total is " + price);
     }
 
     @DeleteMapping("/delete/{orderId}")

@@ -18,6 +18,12 @@ public class MyUserController {
 
     private final AuthService authService;
 
+    @GetMapping("/get")
+    public ResponseEntity getUsers(){
+        List<MyUser> users = authService.getUsers();
+        return ResponseEntity.status(200).body(users);
+    }
+
     @PutMapping("/update-password")
     public ResponseEntity updateUserPassword(@AuthenticationPrincipal MyUser myUser, @RequestBody String password){
         authService.updateUserPassword(myUser, password);

@@ -44,9 +44,9 @@ public class SpringConfig {
                         "api/v1/product/delete/{productId}",
                         "api/v1/order/get",
                         "api/v1/order/change-status/{orderId}/{status}",
-                        "").hasAuthority("ADMIN")
+                        "api/v1/user/get").hasAuthority("ADMIN")
                 .requestMatchers("api/v1/auth/login").hasAuthority("CUSTOMER")
-                .anyRequest().authenticated()
+                .anyRequest().hasAuthority("CUSTOMER")
                 .and()
                 .logout().logoutUrl("api/v1/auth/logout")
                 .deleteCookies("JSESSIONID")

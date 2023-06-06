@@ -31,7 +31,7 @@ public class AuthController {
 
     @PostMapping("/customer")
     public ResponseEntity customer(){
-        return ResponseEntity.status(200).body("Welcome User");
+        return ResponseEntity.status(200).body("Welcome Customer");
     }
 
     @PostMapping("/login")

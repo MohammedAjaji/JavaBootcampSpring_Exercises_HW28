@@ -9,9 +9,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class OrderDTO {
 
+    private Integer productId;
+
     @NotNull(message = "quantity cannot be null")
     private Integer quantity;
-
-    private Integer productId;
 
 }

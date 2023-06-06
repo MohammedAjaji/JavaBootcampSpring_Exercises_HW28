@@ -1,5 +1,6 @@
 package com.example.spring_homework28.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
@@ -31,6 +32,7 @@ public class Order {
     @Column(columnDefinition = "decimal not null")
     private Double totalPrice;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date dateReceived;
 
     @NotEmpty(message = "status cannot be empty")

@@ -29,7 +29,7 @@ public class OrderService {
 
 
 
-    public void addOrder(MyUser myUser, OrderDTO dto) {
+    public Double addOrder(MyUser myUser, OrderDTO dto) {
         Product product = productRepository.findProductById(dto.getProductId());
 
         Order order = new Order();
@@ -45,9 +45,10 @@ public class OrderService {
 
 
         orderRepository.save(order);
+        return totalPrice;
     }
 
-    public void updateOrder(Integer userId, OrderDTO dto, Integer orderId) {
+    public Double updateOrder(Integer userId, OrderDTO dto, Integer orderId) {
         Order oldOrder = orderRepository.findOrderById(orderId);
         if (oldOrder == null){
             throw new ApiException("Order Not Found");
@@ -66,6 +67,7 @@ public class OrderService {
         oldOrder.setTotalPrice(totalPrice);
 
         orderRepository.save(oldOrder);
+        return totalPrice;
     }
 
     public void deleteOrder(Integer userId, Integer orderId) {
